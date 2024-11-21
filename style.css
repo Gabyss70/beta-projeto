@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary:#5350ac;
+}
+
+body{
+    background: #000;
+    font-family: 'Roboto',sans-serif;
+}
+
+/* Header */
+
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
+    z-index: 1000;
+}
+header::after{
+    position: absolute;
+    content: '';
+    top:50%;
+    transform: translateY(-50%);
+    left: 100px;
+    height: 5px;
+    width: 40%;
+    background: linear-gradient(90deg,var(--primary),transparent);
+}
+.logo{
+    font-size: 30px;
+    color: #fff;
+}
+.logo img{
+    max-width: 200px;
+    filter: invert(1);
+}
+header .year{
+    font-family: 'Racing Sans One',cursive;
+    font-size: 1em;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin-top: 40px;
+}
+header .menu{
+    position: relative;
+    height: 30px;
+    width: 30px;
+    background: url('icon/menu-3-fill.png') no-repeat;
+    background-size:30px;
+    background-position: center;
+    filter: invert(1);
+    cursor: pointer;
+}
+header .menu.active{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    background: url('icon/close-line.png') no-repeat;
+    background-size:35px;
+    background-position: center;
+    filter: invert(1);
+    cursor: pointer;
+}
+/*Navegacao*/
+
+.nav{
+    z-index: 200;
+    position: absolute;
+    right: 100px;
+    top: 0;
+    width: 30%;
+    height: 5px;
+    border-bottom: 5px solid;
+    border-image: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary),
+        var(--primary)
+        ) 
+        30;
+    background: transparent;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    transform-origin: right;
+}
+.nav.active{
+    top: 55px;
+    width: 40%;
+    height: 70px;
+    border-top: 5px solid;
+    border-bottom: none;
+    border-image: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary),
+        var(--primary),
+        transparent
+    ) 30;
+    border-bottom: none;
+}
+.nav li{
+    position: relative;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100px);
+    transition: 0.5s;
+}
+.nav.active li{
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+}
+.nav li a{
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.nav li a:hover{
+    box-shadow: inset 0 0 20px rgba(0, 194, 222, 0.5);
+}
+/* Banner */
+
+.banner{
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.banner::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        rgba(0, 0, 0, 0.062),
+        rgba(0, 0, 0, 0.163),
+        rgba(0, 0, 0, 0.472),
+        rgba(0, 0, 0, 0.542)
+    );
+}
+.banner::before{
+    position: absolute;
+    content: '';
+    top: 25%;
+    left: 0;
+    width: 5px;
+    height: 40%;
+    background: linear-gradient(var(--primary),var(--primary),transparent);
+    z-index: 100;
+}
+
+/* Video */
+
+.banner .bg-video{
+    display: none;
+    position: absolute;
+    color: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banner .bg-video.active{
+    display: block;
+}
+
+/*Banner Content */
+
+.banner .content {
+    position: relative;
+    max-width: 700px;
+    padding-bottom: 400px;
+    z-index: 100;
+}
+.banner .content h1 span{
+    color: var(--primary);
+}
+.banner .content h1{
+    font-family: 'Racing Sans One',cursive;
+    font-size: 3em;
+    color: #fff;
+    font-weight: 500;
+    line-height: 0.8em;
+    letter-spacing: 5px;
+}
+
+.banner .content .model{
+    font-size: 2em;
+    text-transform: uppercase;
+    color: var(--primary);
+    display: none;
+}
+.banner .content .model.active{
+    display: block;
+}
+
+.banner .content p{
+    color: #fff;
+    font-size: 200;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+}
+.banner .content a{
+    position: relative;
+    width: 200px;
+    color: #ffff;
+    text-decoration: none;
+    padding: 15px 60px;
+    background: transparent;
+    border-bottom: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary),
+        var(--primary),
+        transparent
+    )
+    30;
+    box-shadow: inset 0 0 10px rgba(0, 194, 222, 0.5);
+    backdrop-filter: blur(20px);
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    font-size: 1em;
+}
+.banner .content a:hover{
+    box-shadow: inset 0 0 50px rgba(0, 194, 222, 0.5);
+}
+
+/* gallery */
+
+.banner .gallery{
+    position: absolute;
+    content: '';
+    left: 150px;
+    bottom: 0;
+    width: 80%;
+    height: 30%;
+    z-index: 100;
+    background: transparent;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.139)
+    ,0px -10px 40px rgba(0, 0, 0, 0.105);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.banner .gallery::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 10px;
+    width: 100%;
+    background: var(--primary);
+    filter: blur(15px);
+}
+
+.banner .gallery .carousel{
+    width: 100%;
+    height: 100%;
+}
+.carousel .carousel-item{
+    width: 250px;
+    cursor: pointer;
+}
+.carousel .carousel-item img{ 
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+.carousel .carousel-item h4{
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.3em;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+/* social */
+
+.sci{
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}   
+.sci li {
+    list-style: none;
+}
+.sci li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+    transition: 0.3s;
+}
+.sci li a:hover{
+    color: var(--primary);
+}
+.sci .play,
+.sci .pause{
+    display: none;
+    transition: 0.3s;
+}
+.sci .play.active{
+    display: block;
+}
+.sci .pause.active{
+    display: block;
+}
+/* Reponsividade */
+
+@media (max-width: 600px) {
+    header{
+        padding: 20px 50px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    header::after{
+        left: 50%;
+        transform: translate(-50%,50%);
+        background: var(--primary);
+    }
+    .logo{
+        margin-top: 10px;
+    }
+    .nav{
+        right: 0;
+        width: 100%;
+    }
+    .nav.active{
+        right: 0;
+        top:0;
+        width: 100vw;
+        height: 130vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .banner h1{
+        font-size: 30px;
+    }
+    .banner .content h1 span{
+        font-size: 30px;
+    }
+    .banner {
+        padding: 50px 30px 100px;
+    }
+    .banner .content {
+        padding: 50px 0 100px;
+    }
+    .banner .content h1{
+        font-size: 3em;
+    }
+    .banner .content .model{
+        font-size: 2em;
+    }
+    .banner .content a{
+        width: 150px;
+        padding: 10px 30px;
+    }
+    .banner .gallery{
+        top: 800px;
+        width: 100%;
+        left: 0;
+    }
+    .sci{
+        right: 20px;
+    }
+}
